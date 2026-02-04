@@ -3,6 +3,7 @@
 // Navigation header component
 // ============================================
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
@@ -12,7 +13,7 @@ export default function Header() {
       color: 'white', 
       padding: '20px',
       marginBottom: '30px'
-    }}>
+    }} className="bg-[#333] ">
       <nav style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <Link href="/" style={{ color: 'white', textDecoration: 'none', fontSize: '24px', fontWeight: 'bold' }}>
           My Blog
@@ -25,6 +26,10 @@ export default function Header() {
             Categories
           </Link>
         </span>
+      </nav>
+      <nav style={{ display: 'flex',flexDirection: 'column'}}>
+        <Image style={{borderRadius: '50%'}} src="/dontInteterstToSetProfile.svg" alt="My Icon" width={50} height={50} />
+        <p>User Name</p>
       </nav>
     </header>
   );

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="84.466957mm"
+   height="84.772102mm"
+   viewBox="0 0 84.466957 84.772102"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-7.0280582,-9.996462)">
+    <path
+       id="path1"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#1a1a1a;stroke-width:0.5;stroke-dasharray:none"
+       d="M 67.126049,31.107463 C 66.351309,41.529986 60.797892,41.281571 49.029038,41.269299 37.260182,41.257028 31.347348,40.842449 30.6002,30.418338 29.853052,19.994227 35.682932,11.684603 47.35517,10.348878 59.027413,9.0131559 64.926247,20.924171 67.182797,31.175551" />
+    <path
+       id="rect2"
+       style="fill:#ffffff;stroke:#1a1a1a;stroke-width:0.5;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="M 27.853566,40.319234 C 18.818343,40.787019 16.768447,48.202157 14.232384,54.414501 L 7.3042792,71.385835 C 6.7955708,72.631966 18.834849,94.518564 20.248856,94.518564 h 61.461496 c 1.414011,0 10.304347,-27.863763 9.480781,-28.949405 L 80.79872,51.86995 C 63.832757,29.504967 65.171123,48.314823 48.609408,44.369296 L 34.875372,41.09766 c -1.89775,-0.452104 -3.595555,-0.701568 -5.119333,-0.776959 -0.666654,-0.03298 -1.300124,-0.03265 -1.902473,-0.0014 z M 27.634588,55.645216 30.54187,88.819301 18.237146,73.347609 Z m 40.100489,0.221988 10.604505,9.809951 -3.335246,24.263264 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.49606px;font-family:'MV Boli';-inkscape-font-specification:'MV Boli, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#445500;stroke:#445500;stroke-width:0.486793;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="46.908825"
+       y="44.142647"
+       id="text4"
+       transform="scale(0.75880872,1.3178552)"><tspan
+         id="tspan4"
+         x="46.908825"
+         y="44.142647"
+         style="fill:#445500;stroke:#445500;stroke-width:0.486793;stroke-dasharray:none">i don't </tspan><tspan
+         id="tspan5"
+         x="46.908825"
+         y="53.512722"
+         style="fill:#445500;stroke:#445500;stroke-width:0.486793;stroke-dasharray:none">interest to </tspan><tspan
+         id="tspan6"
+         x="46.908825"
+         y="62.882797"
+         style="fill:#445500;stroke:#445500;stroke-width:0.486793;stroke-dasharray:none">set profile</tspan></text>
+  </g>
+</svg>
