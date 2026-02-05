@@ -74,7 +74,7 @@ import PostCard from '../components/PostCard';
 
 export default async function HomePage() {
   const posts = await getPosts(true); // Get only published posts
-  console.log(posts);
+  // console.log(posts);
   
   return (
     <div>
