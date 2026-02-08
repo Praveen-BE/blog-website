@@ -77,7 +77,7 @@ export default async function HomePage() {
   // console.log(posts);
   
   return (
-    <div>
+    <div className='bg-blue-50'>
       <h1>Latest Posts</h1>
       
       {posts.length === 0 ? (

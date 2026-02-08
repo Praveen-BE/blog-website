@@ -13,6 +13,8 @@ pnpm dev
 # or
 bun dev
 ```
+if port already run
+npx kill-port 3000
 
 This code is given by claude ai
 
