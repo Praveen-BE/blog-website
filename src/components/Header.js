@@ -15,7 +15,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const user = useContext(UserContext);
-  console.log(user?.user);
+  // console.log(user?.user);
 
   // Close dropdown when clicking outside
   useEffect(() => {

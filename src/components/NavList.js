@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const NavList = () => {
@@ -14,9 +15,14 @@ const NavList = () => {
         </a>
     </li>
     <li>
-        <a href="#" className="text-slate-900 block text-[15px] font-medium">
-        Support
-        </a>
+        <Link href="/create" className="text-slate-900 block text-[15px] font-medium">
+        Create New Post
+        </Link>
+    </li>
+        <li>
+        <Link href="/myblogs" className="text-slate-900 block text-[15px] font-medium">
+        My Blogs
+        </Link>
     </li>
     {/* Add more links */}
     </ul>
