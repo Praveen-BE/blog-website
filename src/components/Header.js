@@ -56,7 +56,7 @@ export default function Header() {
 
 
   return (
-    <header className="flex shadow-md py-3 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
+    <header className="flex shadow-md py-3 px-4 sm:px-10 bg-white min-h-17.5 tracking-wide relative z-50">
       <div className="flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full">
         {/* Logo */}
         <a href="#">
@@ -68,12 +68,12 @@ export default function Header() {
           id="collapseMenu"
           className={`${
             menuOpen ? "block" : "hidden"
-          } max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 lg:block`}
+          } max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-75 max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 lg:block`}
         >
           <button
             id="toggleClose"
             onClick={() => setMenuOpen(false)}
-            className="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200 cursor-pointer"
+            className="lg:hidden fixed top-2 right-4 z-100 rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200 cursor-pointer"
           >
             ✕
           </button>

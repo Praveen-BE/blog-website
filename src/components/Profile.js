@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <div
         id="profile-dropdown-menu"
-        className="bg-white z-20 shadow-lg py-6 px-6 rounded-sm sm:min-w-[320px] max-sm:min-w-[250px] absolute right-0 top-10"
+        className="bg-white z-20 shadow-lg py-6 px-6 rounded-sm sm:min-w-[320px] max-sm:min-w-62.5 absolute right-0 top-10"
     >
         <h6 className="font-semibold text-[15px]">Welcome</h6>
         <p className="text-sm text-gray-500 mt-1">
@@ -38,7 +38,7 @@ export const WithUserDataProfile = ()=>{
   return (
     <div
         id="profile-dropdown-menu"
-        className="bg-white z-20 shadow-lg py-6 px-6 rounded-sm sm:min-w-[320px] max-sm:min-w-[250px] absolute right-0 top-10"
+        className="bg-white z-20 shadow-lg py-6 px-6 rounded-sm sm:min-w-62.5 absolute right-0 top-10"
     >
         <h6 className="font-semibold text-[15px]">{user?.user?.name || "user name"}</h6>
         
