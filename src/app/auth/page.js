@@ -26,7 +26,7 @@ const AuthPage = () => {
             const password = loginPasswordRef.current?.value;
             const res = await loginAPI({loginEmail:email, loginPassword: password});
             console.log(res);
-            setUser(res.user);
+            setUser(res);
             router.push("/");
         }
   return (

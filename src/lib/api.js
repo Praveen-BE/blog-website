@@ -20,6 +20,38 @@ export async function getPosts(published = true) {
   }
 }
 
+export async function getPostsByAuthorId(author_id){
+  try {
+    const res = await fetch(`${API_URL}/posts/authorblogs/${author_id}`, {
+      next: { revalidate: 60 }
+    });
+    if (!res.ok) throw new Error('Failed to fetch posts');
+    return res.json();
+  } catch(error){
+    console.error('Error fetching posts:', error);
+    return [];
+  }
+}
+
+export async function getPostsMyBlogs(){
+  try {
+    const res = await fetch(`http://localhost:5000/api/posts/myblogs`, {
+        method: 'GET',
+        credentials: 'include',
+        headers:{
+        'Content-Type': 'application/json'}
+    });
+      //  const data = await res.json();
+    // console.log(data);
+    if (!res.ok) throw new Error('Failed to fetch posts');
+ 
+    return res.json();
+  } catch(error){
+    console.error('Error fetching posts:', error);
+    return [];
+  }
+}
+
 export async function getPostById(id) {
   try {
     const res = await fetch(`${API_URL}/posts/${id}`, {

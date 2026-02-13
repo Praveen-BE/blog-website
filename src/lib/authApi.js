@@ -8,6 +8,7 @@ export async function loginAPI({loginEmail, loginPassword}) {
 try {
   const res = await fetch(`${API_URL}/auth/login`, {
     method: 'POST', // important: specify POST
+    credentials: "include",
     headers: {
       'Content-Type': 'application/json'
     },

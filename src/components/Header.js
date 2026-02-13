@@ -10,12 +10,19 @@ import { useState, useEffect, useContext } from "react";
 import Profile, { WithUserDataProfile } from "./Profile";
 import NavList from "./NavList";
 import { UserContext } from "../context/UserContext";
+import { getUserProfileByToken } from "@/lib/userProfileAPI";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const user = useContext(UserContext);
+  const {user,setUser} = useContext(UserContext);
   // console.log(user?.user);
+  useEffect(()=>{
+    getProfile();
+  },[]);
+  // useEffect(()=>{
+  //   console.log("User updated:", user);
+  // },[user]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -31,6 +38,22 @@ export default function Header() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [dropdownOpen]);
+
+
+  const getProfile = async () => {
+  try {
+    const userData = await getUserProfileByToken();
+    if (!userData) {
+      setUser(null);
+    } else {
+      setUser({ ...userData });
+    }
+  } catch (err) {
+    console.error("Error fetching profile:", err);
+    setUser(null);
+  }
+};
+
 
   return (
     <header className="flex shadow-md py-3 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
@@ -72,7 +95,7 @@ export default function Header() {
               </button>
 
               {dropdownOpen && (
-                user?.user ?<WithUserDataProfile/>:
+                user ?<WithUserDataProfile/>:
                 <Profile/>
               )}
             </li>
@@ -94,27 +117,3 @@ export default function Header() {
   );
 }
 
-// 
-// export default function Header() {
-//   return (
-//     <header className="bg-gray-800 text-white p-5 mb-7.5">
-//       <nav className='max-w-300 mx-0 my-auto'>
-//         <Link href="/" className='text-white no-underline size-6 font-bold'>
-//           My Blog
-//         </Link>
-//         <span className='ml-7.5'>
-//           <Link href="/" className='text-white no-underline mr-5'>
-//             Home
-//           </Link>
-//           <Link href="/categories" className='text-white no-underline'>
-//             Categories
-//           </Link>
-//         </span>
-//       </nav>
-//       <nav className='flex flex-col'>
-//         <Image className='rounded-[50%]' src="/dontInteterstToSetProfile.svg" alt="My Icon" width={50} height={50} />
-//         <p>User Name</p>
-//       </nav>
-//     </header>
-//   );
-// }
