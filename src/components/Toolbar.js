@@ -6,6 +6,7 @@ import { $getSelection, $isRangeSelection, CAN_REDO_COMMAND, CAN_UNDO_COMMAND, C
 import React, { useCallback, useEffect, useState } from 'react';
 import {mergeRegister} from '@lexical/utils';
 import { useDebouncedCallback } from 'use-debounce';
+import { useEditorContext } from '@/context/EditorContext';
 
 const Toolbar = () => {
       const [canUndo, setCanUndo] = useState(false);
@@ -13,7 +14,11 @@ const Toolbar = () => {
       const [isBold, setIsBold] = useState(false);
       const [isItalic, setIsItalic] = useState(false);
       const [editor] = useLexicalComposerContext();
-    //   const handleSave = useDebouncedCallback(async (lexicalJson) => {
+      const {setLexicalJson} = useEditorContext();
+      const handleStateSave = useDebouncedCallback(async (contentLexical) => {
+        setLexicalJson(contentLexical);
+    }, 500);
+    // const handleSave = async (lexicalJson) => {
     //     try {
     //       await fetch(`http://localhost:5000/api/editor/lexicalsave`, {
     //         method: "POST",
@@ -23,18 +28,7 @@ const Toolbar = () => {
     //     } catch (err) {
     //       console.error("Error saving editor state:", err);
     //     }
-    // }, 500);
-    const handleSave = async (lexicalJson) => {
-        try {
-          await fetch(`http://localhost:5000/api/editor/lexicalsave`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ lexicalJson : lexicalJson, postId: id}),
-          });
-        } catch (err) {
-          console.error("Error saving editor state:", err);
-        }
-    };
+    // };
 
 
       const $updateToolbar = useCallback(() => {
@@ -61,7 +55,7 @@ const Toolbar = () => {
         if(dirtyElements.size === 0 && dirtyLeaves.size === 0){
             return;
         }
-        // handleSave(JSON.stringify(editorState));
+        handleStateSave(JSON.stringify(editorState));
       }),
     editor.registerCommand(
         CAN_UNDO_COMMAND,

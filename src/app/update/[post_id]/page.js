@@ -1,5 +1,6 @@
 "use client";
 import { UpdateEditor } from '@/components/Editor';
+import { useEditorContext } from '@/context/EditorContext';
 import { getDataPostForEdit } from '@/lib/api';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -8,14 +9,20 @@ import React, { useEffect, useState } from 'react';
 export default function PostPage() {
   const {post_id} = useParams();
   const [post, setPost] = useState(null);
+  const {lexicalJson, setLexicalJson} = useEditorContext();
 
   useEffect(()=>{
     const post = getDataForEdit();
-  });
+  },[]);
 
   const getDataForEdit = async ()=>{
     const res = await getDataPostForEdit(post_id);
     setPost(res);
+    setLexicalJson(res.lexical_content);
+  }
+
+  const updateAndSavePost = ()=>{
+    console.log(lexicalJson);
   }
   
   if (!post) {
@@ -33,7 +40,7 @@ export default function PostPage() {
   </Link>
 
   <button
-    onClick={()=>UpdateAndSavePost()}
+    onClick={()=>updateAndSavePost()}
     className="inline-block mt-5 mb-5 font-bold text-white bg-blue-700 p-3 rounded-2xl"
   >
     Save
@@ -41,7 +48,7 @@ export default function PostPage() {
 
   
   <button
-    onClick={()=>PublishTheSavedPost()}
+    onClick={()=>publishTheSavedPost()}
     className="inline-block mt-5 mb-5 font-bold text-white bg-blue-700 p-3 rounded-2xl"
   >
     Save & Publish
@@ -72,7 +79,7 @@ export default function PostPage() {
 
   <div className="leading-8 whitespace-pre-wrap w-full max-w-4xl mx-auto h-fit">
     {/* {post.content} */}
-     <UpdateEditor lexical_content={post.lexical_content}/>
+     <UpdateEditor lexical_content={lexicalJson}/>
   </div>
 
 
