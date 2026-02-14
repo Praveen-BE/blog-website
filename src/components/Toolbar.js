@@ -9,14 +9,33 @@ import { useDebouncedCallback } from 'use-debounce';
 
 const Toolbar = () => {
       const [canUndo, setCanUndo] = useState(false);
-  const [canRedo, setCanRedo] = useState(false);
+      const [canRedo, setCanRedo] = useState(false);
       const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-    const [editor] = useLexicalComposerContext();
-  const handleSave = useDebouncedCallback((content)=>{
-    console.log(content);
-    
-  }, 500);
+      const [isItalic, setIsItalic] = useState(false);
+      const [editor] = useLexicalComposerContext();
+    //   const handleSave = useDebouncedCallback(async (lexicalJson) => {
+    //     try {
+    //       await fetch(`http://localhost:5000/api/editor/lexicalsave`, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({ lexicalJson : lexicalJson, postId: id}),
+    //       });
+    //     } catch (err) {
+    //       console.error("Error saving editor state:", err);
+    //     }
+    // }, 500);
+    const handleSave = async (lexicalJson) => {
+        try {
+          await fetch(`http://localhost:5000/api/editor/lexicalsave`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ lexicalJson : lexicalJson, postId: id}),
+          });
+        } catch (err) {
+          console.error("Error saving editor state:", err);
+        }
+    };
+
 
       const $updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -42,7 +61,7 @@ const Toolbar = () => {
         if(dirtyElements.size === 0 && dirtyLeaves.size === 0){
             return;
         }
-        handleSave(JSON.stringify(editorState));
+        // handleSave(JSON.stringify(editorState));
       }),
     editor.registerCommand(
         CAN_UNDO_COMMAND,

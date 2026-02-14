@@ -65,6 +65,19 @@ export async function getPostById(id) {
   }
 }
 
+export async function getDataPostForEdit(id) {
+  try {
+    const res = await fetch(`${API_URL}/editor/edit/${id}`, {
+      next: { revalidate: 60 }
+    });
+    if (!res.ok) throw new Error('Failed to fetch post');
+    return res.json();
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
+}
+
 export async function getCategories() {
   try {
     const res = await fetch(`${API_URL}/categories`, {

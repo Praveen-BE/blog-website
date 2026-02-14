@@ -5,7 +5,7 @@
 
 "use client";
 
-import PostCard from '@/components/PostCard';
+import PostCardUpdate from '@/components/PostCardUpdate';
 import { getPostsMyBlogs } from '@/lib/api';
 import { useEffect, useState } from 'react';
 
@@ -26,7 +26,7 @@ export default function HomePage() {
       {posts.length === 0 ? (
         <p>No posts found.</p>
       ) : (
-        posts.map(post => <PostCard key={post.id} post={post} />)
+        posts.map(post => <PostCardUpdate key={post.id} post={post} />)
       )}
     </div>
   );

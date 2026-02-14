@@ -37,7 +37,7 @@ export default function Editor() {
   return (
     <div className='max-w-4xl mx-auto bg-white rounded-lg h-[50vh] p-5'>
     <LexicalComposer initialConfig={initialConfig}>
-        <LoadState/>
+        <LoadState lexicalJson={null}/>
         <Toolbar/>
       <RichTextPlugin
         contentEditable={
@@ -56,8 +56,39 @@ export default function Editor() {
   );
 }
 
+export const UpdateEditor = ({lexical_content})=>{
+    const initialConfig = {
+    namespace: 'MyEditor',
+    theme: exampleTheme,
+    onError,
+    nodes:[HeadingNode],
+    editable: false,
+  };
+
+  return (
+    <div className='max-w-full mx-auto bg-white rounded-lg h-[50vh] p-5'>
+    <LexicalComposer initialConfig={initialConfig}>
+        <LoadState lexicalJson={lexical_content}/>
+        <Toolbar/>
+      <RichTextPlugin
+        contentEditable={
+          <ContentEditable
+            className='focus:outline-none h-fit w-fit'
+            aria-placeholder={'Enter some text...'}
+            placeholder={<div>Enter some text...</div>}
+          />
+        }
+        ErrorBoundary={LexicalErrorBoundary}
+      />
+      <HistoryPlugin />
+      <AutoFocusPlugin />
+    </LexicalComposer>
+    </div>
+  );
+} 
+
 const exampleTheme = {
-  paragraph: 'editor-paragraph text-blue-500',
+  paragraph: 'editor-paragraph',
   quote: 'editor-quote',
   heading: {
     h1: 'text-3xl font-bold',
