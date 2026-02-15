@@ -2,6 +2,7 @@
 import { UpdateEditor } from '@/components/Editor';
 import { useEditorContext } from '@/context/EditorContext';
 import { getDataPostForEdit } from '@/lib/api';
+import { editorLexicalJsonApi, editorLexicaltoHtmlPublish } from '@/lib/editorApi';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -21,8 +22,15 @@ export default function PostPage() {
     setLexicalJson(res.lexical_content);
   }
 
-  const updateAndSavePost = ()=>{
+  const updateAndSavePost = async()=>{
     console.log(lexicalJson);
+    const res = await editorLexicalJsonApi({lexicalJsonData:lexicalJson, post_id});
+    console.log(res);
+  }
+
+  const publishTheSavedPost = async()=>{
+    const res = await editorLexicaltoHtmlPublish({lexicalJsonData: lexicalJson, post_id});
+    console.log(res);
   }
   
   if (!post) {

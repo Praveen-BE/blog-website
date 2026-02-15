@@ -55,7 +55,7 @@ export default async function PostPage({ params }) {
   </div>
 
   <div className="leading-8 whitespace-pre-wrap">
-    {post.content}
+          <article className="lexical-content prose" dangerouslySetInnerHTML={{ __html: post.content }} />
   </div>
 
   <div className="mt-10 pt-5 border-t border-gray-300">

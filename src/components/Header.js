@@ -59,7 +59,7 @@ export default function Header() {
     <header className="flex shadow-md py-3 px-4 sm:px-10 bg-white min-h-17.5 tracking-wide relative z-50">
       <div className="flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full">
         {/* Logo */}
-        <a href="#">
+        <a href="/">
           <Image src="/bloglogo-1.svg" alt="bloglogo-1" width={50} height={50}/>
         </a>
 
