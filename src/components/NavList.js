@@ -5,12 +5,12 @@ const NavList = () => {
   return (
     <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3">
     <li>
-        <a href="#" className="text-slate-900 block text-[15px] font-medium">
+        <a href="/" className="text-slate-900 block text-[15px] font-medium">
         Home
         </a>
     </li>
     <li>
-        <a href="#" className="text-slate-900 block text-[15px] font-medium">
+        <a href="/catogories" className="text-slate-900 block text-[15px] font-medium">
         Catagories
         </a>
     </li>

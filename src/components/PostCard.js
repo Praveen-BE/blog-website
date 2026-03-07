@@ -25,9 +25,9 @@ export default function PostCard({ post }) {
   
   {post.categories && post.categories.length > 0 && (
     <div className="mt-2.5">
-      {post.categories.map(cat => (
+      {post.categories.map((cat,index )=> (
         <span 
-          key={cat.id} 
+          key={index} 
           className="bg-gray-100 px-3 py-1 mr-2 rounded text-xs"
         >
           {cat.name}
