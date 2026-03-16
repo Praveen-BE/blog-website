@@ -146,15 +146,18 @@ export default function PostPage() {
       ></input>
 
       <div className="text-gray-600 mb-5">
-        <p>
+        {/* <p>
+          By {author.name} • {new Date(post.created_at).toLocaleDateString()}
+        </p> */}
+        <p suppressHydrationWarning>
           By {author.name} • {new Date(post.created_at).toLocaleDateString()}
         </p>
 
         {post.categories && post.categories.length > 0 && (
           <div className="mt-2.5">
-            {post.categories.map((cat) => (
+            {post.categories.map((cat, index) => (
               <Link
-                key={cat.id}
+                key={cat.id || index}
                 href={`/categories/${cat.slug}`}
                 className="bg-gray-100 px-3 py-1 mr-2 rounded text-xs no-underline text-gray-800"
               >
