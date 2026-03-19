@@ -96,10 +96,22 @@ const Toolbar = () => {
     });
   };
 
+  // ... inside your Toolbar component
   const insertImage = (url) => {
     editor.update(() => {
+      // 1. Create the node
       const imageNode = new ImageNode(url);
-      $insertNodes([imageNode]);
+
+      // 2. Get current selection
+      const selection = $getSelection();
+
+      if (selection !== null) {
+        // 3. Insert at cursor position
+        selection.insertNodes([imageNode]);
+      } else {
+        // Fallback: append to end if no selection
+        $getRoot().append(imageNode);
+      }
     });
   };
 

@@ -4,7 +4,7 @@
 // Dynamic route: /posts/1, /posts/2, etc.
 // ============================================
 
-import CommentSection from "@/components/commentsSection";
+import CommentSection from "@/components/CommentsSection";
 import { getPostById } from "../../../lib/api";
 import Link from "next/link";
 
@@ -41,7 +41,7 @@ export default async function PostPage({ params }) {
 
       <div className="text-gray-600 mb-5">
         <p>
-          By {post.author_name} •{" "}
+          By {post.author.name} •{" "}
           {new Date(post.created_at).toLocaleDateString()}
         </p>
 
@@ -70,9 +70,9 @@ export default async function PostPage({ params }) {
       <div className="mt-10 pt-5 border-t border-gray-300">
         <h3>About the Author</h3>
         <p>
-          <strong>{post.author_name}</strong>
+          <strong>{post.author.name}</strong>
         </p>
-        {post.author_bio && <p>{post.author_bio}</p>}
+        {post.author_bio && <p>{post.author.bio}</p>}
       </div>
 
       <CommentSection postId={id} />
