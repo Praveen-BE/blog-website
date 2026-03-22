@@ -1,19 +1,31 @@
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import React, { useEffect } from 'react'
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useEffect, useRef } from "react";
 
-const text = `{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Praveen akdakakljsdf  j","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}`;
+const LoadState = ({ lexicalJson }) => {
+  const [editor] = useLexicalComposerContext();
+  const isFirstLoad = useRef(true); // Track if we've already loaded
 
-const LoadState = ({lexicalJson}) => {
-    const [editor] = useLexicalComposerContext();
-  
-    useEffect(()=>{
-        const newState = editor.parseEditorState(lexicalJson);
+  useEffect(() => {
+    // 1. Only load if we have data, an editor, AND we haven't loaded yet
+    if (!lexicalJson || !editor || !isFirstLoad.current) return;
+
+    try {
+      const newState = editor.parseEditorState(lexicalJson);
+
+      // Use editor.update for the safest state transition
+      editor.update(() => {
         editor.setEditorState(newState);
-        editor.setEditable(true);
-    },[]);
-  return (
-    <></>
-  )
-}
+        isFirstLoad.current = false; // Mark as loaded so it never runs again
+      });
 
-export default LoadState
+      // Keep it editable
+      editor.setEditable(true);
+    } catch (e) {
+      console.error("Failed to load editor state:", e);
+    }
+  }, [editor, lexicalJson]);
+
+  return null;
+};
+
+export default LoadState;

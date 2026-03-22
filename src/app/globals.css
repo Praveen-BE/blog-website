@@ -24,3 +24,199 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+/* 
+─────────────────────────────────────────────────────────────────────────────
+EDITOR CSS — add these to your global CSS or a .module.css file
+───────────────────────────────────────────────────────────────────────────── */
+
+.editor-paragraph {
+  margin: 0 0 8px;
+}
+.editor-heading-h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 20px 0 8px;
+}
+.editor-heading-h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 16px 0 6px;
+}
+.editor-heading-h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 14px 0 4px;
+}
+.editor-quote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 16px;
+  color: #6b7280;
+  margin: 8px 0;
+}
+.editor-text-bold {
+  font-weight: 700;
+}
+.editor-text-italic {
+  font-style: italic;
+}
+.editor-text-underline {
+  text-decoration: underline;
+}
+.editor-text-strikethrough {
+  text-decoration: line-through;
+}
+.editor-text-code {
+  font-family: "Fira Code", monospace;
+  background: #f3f4f6;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.editor-image {
+  display: block;
+}
+
+/* Alignment Classes */
+.editor-align-left {
+  text-align: left;
+}
+
+.editor-align-center {
+  text-align: center;
+}
+
+.editor-align-right {
+  text-align: right;
+}
+
+.editor-align-justify {
+  text-align: justify;
+}
+
+/* Container for the converted Lexical content */
+.lexical-content {
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+/* Base Image Styling */
+.lexical-content img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Prevents unwanted whitespace */
+}
+
+/* Alignment Classes - Match these to your Editor Theme */
+.lexical-content .editor-image-left {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.lexical-content .editor-image-right {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.lexical-content .editor-image-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Figure & Caption Styling */
+.lexical-content figure {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the image and caption in the figure */
+}
+
+.lexical-content figcaption {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray text */
+  text-align: center;
+  font-style: italic;
+}
+
+/* Clearfix for floating images */
+.lexical-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* If the parent paragraph is centered */
+.lexical-content p[style*="text-align: center"] figure,
+.lexical-content p[style*="text-align: center"] img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* If the parent paragraph is right-aligned */
+.lexical-content p[style*="text-align: right"] figure,
+.lexical-content p[style*="text-align: right"] img {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* If the parent paragraph is left-aligned */
+.lexical-content p[style*="text-align: left"] figure,
+.lexical-content p[style*="text-align: left"] img {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* For Text-wrap like Editor */
+.floating-image-toolbar {
+  display: flex;
+  background: #1a1a1a;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  gap: 4px;
+}
+
+.floating-image-toolbar button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.floating-image-toolbar button:hover {
+  background: #333;
+}
+
+/* to hide the empty paragraph */
+/* p.editor-paragraph:empty {
+  display: none;
+} */
+/* Ensure empty paragraphs still occupy space */
+.editor-paragraph:empty::before,
+.editor-paragraph > br:only-child::before {
+  content: "";
+  display: inline-block;
+  height: 1em; /* Ensures it stays exactly one line high */
+  vertical-align: middle;
+}
+
+/* Optional: limit the maximum gap if users go crazy with Enters */
+.lexical-content p.editor-paragraph {
+  margin-bottom: 8px;
+}
+
+.editor-input {
+  /* Nirmala UI is the standard Windows Tamil font */
+  /* Latha is the older standard */
+  font-family: "Nirmala UI", "Latha", "Segoe UI", Tahoma, sans-serif;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
